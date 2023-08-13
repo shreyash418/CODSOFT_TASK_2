@@ -1,0 +1,48 @@
+#include <iostream>
+#include <string>
+#include <vector>
+#include <algorithm>
+using namespace std;
+struct Student {
+    string name;
+    double grade;
+};
+
+int main() {
+    vector<Student> students;
+    int Students;
+
+    cout << "Enter the number of students: ";
+   cin >> Students;
+
+    for (int i = 0; i < Students; ++i) {
+        Student student;
+        cout << "Enter student " << i + 1 << "'s name: ";
+       cin >> student.name;
+      cout << "Enter " << student.name << "'s grade: ";
+     cin >> student.grade;
+        students.push_back(student);
+    }
+
+    double sum = 0.0;
+    double highestGrade = students[0].grade;
+    double lowestGrade = students[0].grade;
+
+    for (const auto& student : students) {
+        sum += student.grade;
+        if (student.grade > highestGrade) {
+            highestGrade = student.grade;
+        }
+        if (student.grade < lowestGrade) {
+            lowestGrade = student.grade;
+        }
+    }
+
+    double average = sum / Students;
+
+    cout << "Average grade: " << average << endl;
+cout << "Highest grade: " << highestGrade << endl;
+  cout << "Lowest grade: " << lowestGrade << endl;
+
+    return 0;
+}
